@@ -95,7 +95,7 @@ articleView.initNewArticlePage = () => {
 articleView.create = () => {
   //console.log(this); //Global (window), not changed element
   console.log("Updating Article...");
-  // TODO: Set up a variable to hold the new article we are creating.
+  // TO/DO: Set up a variable to hold the new article we are creating.
   // Clear out the #articles element, so we can put in the updated preview
 
   let articleDataObj = {};
@@ -120,10 +120,14 @@ articleView.create = () => {
   $('#articles').empty().append(article.toHtml());
 
 
-  // Done: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
-  $('pre code').each();
+  // TO/DO: Activate the highlighting of any code blocks; look at the documentation for hljs to see how to do this by placing a callback function in the .each():
+  $(document).ready(() => {
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+  });
 
-  // TODO: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
+  // TOD/O: Show our export field, and export the new article as JSON, so it's ready to copy/paste into blogArticles.js:
   $('#article-export').show();
   $('#article-json').val(JSON.stringify(articleDataObj) + ",");
 };
